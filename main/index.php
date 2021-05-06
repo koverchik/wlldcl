@@ -34,17 +34,24 @@
                 if(is_array($value)){
           
                     printf("<p class='header-item'>$key :</p>");
+
                     trase($value);
                     }else{
-                        printf("<p class='one-item'>$value </p>");
+                        printf("<li class='one-item'>$value </li>");
                     }
                 }
         }
-        printf("<div class='block-one'>");
+        printf("<ul class='block-one'>");
         trase($newArray);
-        printf("</div>");
+        printf("</ul>");
         ?> 
-
+        <h1>Task 2</h1>
+        <h3>1. Вывести все книги и их авторов.</h3>
+        <code> SELECT * FROM books LEFT JOIN authors ON books.author_id = authors.id;</code>
+        <h3>2. Найти авторов, у которых нет ни одной книги.</h3>
+        <code>SELECT * FROM books RIGHT JOIN authors ON books.author_id = authors.id WHERE books.author_id IS NULL;</code>
+        <h3>3. Найти авторов, у которых больше одной книги.</h3>
+        <code>SELECT name FROM authors where 1 < (SELECT  COUNT(*) AS CountBook FROM books WHERE books.author_id = authors.id);</code>
     </body >
 
 
